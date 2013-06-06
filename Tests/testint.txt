@@ -1,5 +1,5 @@
-!load basictypes.txt
-!load util.txt
+!load JarvisLib/basictypes.txt
+!load JarvisLib/util.txt
 
 
 !mute
