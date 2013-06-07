@@ -15,6 +15,11 @@ public class JarvisBool extends JarvisAtom{
 		
 		return this;
 	}
+	
+	public boolean getValue()
+	{
+		return value;
+	}
 
 	@Override
 	public String makeKey() {

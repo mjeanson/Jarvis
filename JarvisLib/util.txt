@@ -18,6 +18,13 @@
 }
 !ref pbool
 
+#Fonction qui affiche un point
+!{.
 
+	"."
+	!p
+	!c
+}
+!ref pln
 
 !unmute
