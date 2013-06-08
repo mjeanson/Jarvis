@@ -1,0 +1,63 @@
+
+!load JarvisLib/basictypes.txt
+!load JarvisLib/util.txt
+!mute
+
+#Fonction qui retourne la valeur absolue d'un entier positif
+!{.
+	toabs
+}
+!ref fonctionAbsPos
+
+#Fonction qui retourne la valeur absolue d'un entier negatif
+!{.
+	!(int new 0)
+	!(!a - toabs)
+}
+!ref fonctionAbsNeg
+
+#Nouvel objet ifelse qui a pour membres: vrai = fonctionAbsPos et faux = fonctionAbsNeg
+!(ifelse new fonctionAbsPos fonctionAbsNeg)
+!ref calcCondAbs
+
+#Fonction qui fait un test et utilise calcCondition pour faire le calcul selon
+#le résultat de la condition
+!{ toabs .
+	
+	#Test. Retourne un objet booléen
+	!(toabs > 0)
+	!ref resultatTest
+	
+	#Récupère l'atome booléen du résultat (donc vrai ou faux)
+	!(resultatTest value)
+	!ref vraifaux		
+	#Va chercher le membre vrai ou le membre faux selon
+	#la valeur de l'atome booléen (il sert de sélecteur).
+	!(calcCondAbs vraifaux)
+}
+!ref fonctionAbs
+
+
+
+
+!(int new 1)
+!ref pos
+
+!(int new 0)
+!(!a - 2)
+!ref neg
+
+
+pos
+!p
+fonctionAbs
+pint
+
+!p
+
+neg
+!p
+fonctionAbs
+pint
+
+!e

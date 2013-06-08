@@ -5,9 +5,12 @@ Fonctions Tricheuses (25%)
 
 Rectangle (50%)
 ---------------
+* Implementer la fonction valeur absolue : DONE
+* Corriger la classe rectangle : DONE
 
 L'héritage, première partie (75%)
 ---------------------------------
+
 
 Le mutateur universel (90%)
 ---------------------------
