@@ -44,7 +44,7 @@ public class IntegerAddFunction extends JarvisFunction {
 		ArrayList<JarvisAtom> data = new ArrayList<JarvisAtom>();
 		data.add(new JarvisInt(total));
 		
-		return new JarvisObject(((JarvisObject)ji.getEnvironment().get("int")),data);
+		return new JarvisObject(((JarvisObject)ji.getEnvironment().get("int")),data,ji);
 
 	}
 

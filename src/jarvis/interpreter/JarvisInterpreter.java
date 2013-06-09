@@ -182,7 +182,7 @@ public class JarvisInterpreter {
 		data.add(members);
 		data.add(methods);
 
-		JarvisObject ClassClass = new JarvisObject(null, data);
+		JarvisObject ClassClass = new JarvisObject(null, data,this);
 
 		/*
 		 * Cet objet contient la définition d'une classe et est instance de

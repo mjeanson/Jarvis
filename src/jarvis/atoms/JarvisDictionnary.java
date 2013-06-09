@@ -103,4 +103,19 @@ public class JarvisDictionnary extends JarvisAtom {
 		
 	}
 
+	public String reverseLookup(JarvisAtom atom) {
+		
+		
+		
+		for(String symbol:data.keySet())
+		{
+			if(data.get(symbol) == atom)
+			{
+				return symbol;
+			}
+		}
+		
+		return null;
+	}
+
 }
