@@ -24,7 +24,7 @@
 #FONCTIONSTRICHEUSES
 #définition incomplète del a classe int.
 ("value")
-["+" _integerAddFunction "-" _integerSubtractFunction "*" _integerMultiplyFunction "==" _integerEqualsFunction]
+["+" _integerAddFunction "-" _integerSubtractFunction "*" _integerMultiplyFunction "==" _integerEqualsFunction ">" _integerGreaterThanFunction "<" _integerLessThanFunction]
 !(Class new)
 !ref int
 
