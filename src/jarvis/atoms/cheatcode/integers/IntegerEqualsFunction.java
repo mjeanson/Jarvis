@@ -52,7 +52,7 @@ public class IntegerEqualsFunction extends JarvisFunction{
 		ArrayList<JarvisAtom> data = new ArrayList<JarvisAtom>();
 		data.add(new JarvisBool(result));
 		
-		return new JarvisObject(((JarvisObject)ji.getEnvironment().get("bool")),data);
+		return new JarvisObject(((JarvisObject)ji.getEnvironment().get("bool")),data,ji);
 
 	}
 

@@ -46,7 +46,7 @@ public class OperatorNewFunction extends JarvisFunction{
 			data.add(ji.getArg());
 		}		
 				
-		JarvisObject res = new JarvisObject(self, data);		
+		JarvisObject res = new JarvisObject(self, data,ji);		
 		
 		return res;		
 		

@@ -25,22 +25,20 @@ public class JarvisEnvironment {
 	private JarvisEnvironment parent;
 	private JarvisInterpreter interpreter;
 
-	
-
 	public JarvisEnvironment(JarvisInterpreter ji) {
 
 		dictionnary = new JarvisDictionnary();
 		parent = null;
-		
+
 		interpreter = ji;
 
 	}
 
-	public JarvisEnvironment(JarvisInterpreter ji,JarvisEnvironment p) {
+	public JarvisEnvironment(JarvisInterpreter ji, JarvisEnvironment p) {
 
 		dictionnary = new JarvisDictionnary();
 		parent = p;
-		
+
 		interpreter = ji;
 
 	}
@@ -50,10 +48,10 @@ public class JarvisEnvironment {
 		dictionnary.put(id, val);
 	}
 
-	public JarvisAtom getLocal(String id)
-	{
-		return  dictionnary.get(id);
+	public JarvisAtom getLocal(String id) {
+		return dictionnary.get(id);
 	}
+
 	public JarvisAtom get(String id) {
 
 		// recurse parent...
@@ -70,23 +68,41 @@ public class JarvisEnvironment {
 
 	public void print() {
 		dictionnary.print(interpreter);
-		
+
 	}
 
 	public boolean hasParent() {
-		
-		return parent!=null;
+
+		return parent != null;
 	}
 
 	public JarvisEnvironment getParent() {
-		
+
 		return parent;
 	}
 
 	public void get(JarvisAtom atom) {
-		
+
 		get(atom.makeKey());
+
+	}
+	
+
+
+	public String reverseLookup(JarvisAtom atom) {
+
+		String result = "_nosymbol_";
+
+		result = dictionnary.reverseLookup(atom);
 		
+		if (result == null) {
+			if (hasParent()) {
+				return parent.reverseLookup(atom);
+			}
+
+		}		
+
+		return result;
 	}
 
 }

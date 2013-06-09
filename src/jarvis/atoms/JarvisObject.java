@@ -29,19 +29,22 @@ public class JarvisObject extends JarvisAtom {
 	 */
 	private JarvisObject classReference;
 	private ArrayList<JarvisAtom> values;
+	
+	//Référence utile pour faire des reverse lookup
+	private JarvisInterpreter ji;
 
 	// Constructeur d'objet générique
 	// Utilisé comme raccourci par les fonctions tricheuses.
-	public JarvisObject(JarvisObject theClass, ArrayList<JarvisAtom> vals) {
+	public JarvisObject(JarvisObject theClass, ArrayList<JarvisAtom> vals,JarvisInterpreter ji) {
 
 		classReference = theClass;
 
 		values = new ArrayList<JarvisAtom>();
 		values.addAll(vals);
+		
+		this.ji=ji;
 	}
-
 	
-
 	@Override
 	public JarvisAtom interpretNoPut(JarvisInterpreter ji) {	
 		return this;
@@ -115,6 +118,8 @@ public class JarvisObject extends JarvisAtom {
 	public String makeKey() {
 		String s="";
 		int i=0;
+		
+		s += "\""+ji.getEnvironment().reverseLookup(classReference)+"\":";
 		
 		for (JarvisAtom atom : values) {
 			
