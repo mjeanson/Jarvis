@@ -170,6 +170,7 @@ public class JarvisInterpreter {
 		JarvisList members = new JarvisList();
 		members.add(new JarvisString("attributes"));
 		members.add(new JarvisString("methods"));
+		members.add(new JarvisString("super"));
 
 		HashMap<String, JarvisAtom> m = new HashMap<String, JarvisAtom>();
 		JarvisDictionnary methods = new JarvisDictionnary(m);

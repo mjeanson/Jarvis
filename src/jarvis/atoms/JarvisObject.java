@@ -23,6 +23,7 @@ public class JarvisObject extends JarvisAtom {
 	 */
 	public static final int ATTRIBUTE_FIELD =0;
 	public static final int METHOD_FIELD =1;
+	public static final int SUPER_FIELD =2;
 	
 	/*
 	 * Référence à la classe de cet objet.
@@ -93,17 +94,45 @@ public class JarvisObject extends JarvisAtom {
 			if (res == null) {
 				
 				// Rien ne correspond au message
-				return new JarvisString("ComprendPas "+ selector);
+				
+				// Allez chercher la super classe dans le classref
+				JarvisAtom classrefsuper = (JarvisAtom) classReference.values.get(SUPER_FIELD);
+				
+				return getsupermethod(classrefsuper, selector);
 			} else {
 				//C'est une méthode.
 				return res;
 			}
-
-		}
-
-		else {
+		} else {
 			//C'est un attribut.
 			return values.get(pos);
+		}
+	}
+	
+	private JarvisAtom getsupermethod(JarvisAtom superclass, JarvisAtom selector) {
+		
+		if (superclass instanceof JarvisString) {
+			// On a atteint la racine de l'arbre d'héritage
+			return new JarvisString("ComprendPas "+ selector);
+		} else {
+			// Va chercher les méthodes
+			JarvisDictionnary methods = (JarvisDictionnary) ((JarvisObject) superclass).values.get(METHOD_FIELD);
+		
+			// Cherche dans le dictionnaire
+			JarvisAtom res = methods.get(selector.makeKey());
+			
+			if (res == null) {
+			
+				// Rien ne correspond au message
+			
+				// Allez chercher la super classe
+				JarvisAtom supersuperclass = (JarvisAtom) ((JarvisObject) superclass).values.get(SUPER_FIELD);
+			
+				return getsupermethod(supersuperclass, selector);
+			} else {
+				//C'est une méthode.
+				return res;
+			}
 		}
 	}
 

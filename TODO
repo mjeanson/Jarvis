@@ -10,7 +10,8 @@ Rectangle (50%)
 
 L'héritage, première partie (75%)
 ---------------------------------
-
+* Ajouter l'attribut super : DONE
+* Implémenter la recherche de methode recursive : DONE
 
 Le mutateur universel (90%)
 ---------------------------

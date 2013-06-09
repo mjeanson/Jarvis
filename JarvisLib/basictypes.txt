@@ -3,7 +3,11 @@
 
 #HÉRITAGE: il manque la classe Object.
 # Vous devriez la définir ici.
-
+()
+[]
+"NULL"
+!(Class new)
+!ref Object
 
 
 #MUTATEUR: c'est une fonctionnalité 
@@ -17,7 +21,7 @@
 #Classe servant à faire des conditions
 ("true" "false")
 []
-
+Object
 !(Class new)
 !ref ifelse
 
@@ -25,6 +29,7 @@
 #définition incomplète del a classe int.
 ("value")
 ["+" _integerAddFunction "-" _integerSubtractFunction "*" _integerMultiplyFunction "==" _integerEqualsFunction ">" _integerGreaterThanFunction "<" _integerLessThanFunction]
+Object
 !(Class new)
 !ref int
 
@@ -32,6 +37,7 @@
 #définition incomplète de la classe bool.
 ("value")
 ["!" _boolNotFunction "&&" _boolAndFunction "||" _boolOrFunction]
+Object
 !(Class new)
 !ref bool
 

@@ -20,7 +20,7 @@
 	
 	["son" sonFonction "manger" mangerFonction]
 	
-	
+	Object
 	
 	!(Class new)
 }
@@ -48,7 +48,7 @@
 	
 	["son" sonFonction "ageHumain" fonctionAgeHumain]
 	
-	
+	Felin
 	
 	!(Class new)
 }
@@ -62,6 +62,7 @@
 	
 	[]	
 	
+	Chat
 	
 	!(Class new)
 }
