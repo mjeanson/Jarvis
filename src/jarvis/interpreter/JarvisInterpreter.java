@@ -11,6 +11,9 @@ import jarvis.atoms.cheatcode.integers.IntegerAddFunction;
 import jarvis.atoms.cheatcode.integers.IntegerEqualsFunction;
 import jarvis.atoms.cheatcode.integers.IntegerMultiplyFunction;
 import jarvis.atoms.cheatcode.integers.IntegerSubtractFunction;
+import jarvis.atoms.cheatcode.booleans.BooleanNotFunction;
+import jarvis.atoms.cheatcode.booleans.BooleanAndFunction;
+import jarvis.atoms.cheatcode.booleans.BooleanOrFunction;
 import jarvis.exceptions.UndefinedSymbolException;
 
 import java.io.BufferedReader;
@@ -119,6 +122,9 @@ public class JarvisInterpreter {
 		environment.put("_integerMultiplyFunction",
 				new IntegerMultiplyFunction());
 		environment.put("_integerEqualsFunction", new IntegerEqualsFunction());
+		environment.put("_boolNotFunction", new BooleanNotFunction());
+		environment.put("_boolAndFunction", new BooleanAndFunction());
+		environment.put("_boolOrFunction", new BooleanOrFunction());
 		environment.put("_operatorNewFunction", new OperatorNewFunction());
 	}
 

@@ -31,7 +31,7 @@
 #FONCTIONSTRICHEUSES
 #définition incomplète de la classe bool.
 ("value")
-[]
+["!" _boolNotFunction "&&" _boolAndFunction "||" _boolOrFunction]
 !(Class new)
 !ref bool
 

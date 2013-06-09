@@ -4,17 +4,23 @@
 
 !mute
 
+# Creer un objet bool "p" avec la valeure "true"
 !(bool new true)
 !ref p
 
+# Creer un objet bool "q" avec la valeure "false"
 !(bool new false)
 !ref q
 
+# Retourner la valeur inverse de l'objet "p", soit "false"
 !(p !)
 pbool
 
+# Retourner la valeur inverse de l'objet "q", soit "true"
 !(q !)
 pbool
+
+pln
 
 !(p && q)
 pbool
@@ -24,6 +30,8 @@ pbool
 
 !(q && true)
 pbool
+
+pln
 
 !(p || q)
 pbool
