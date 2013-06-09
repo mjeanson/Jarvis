@@ -7,6 +7,7 @@ import jarvis.atoms.JarvisList;
 import jarvis.atoms.JarvisObject;
 import jarvis.atoms.JarvisString;
 import jarvis.atoms.cheatcode.OperatorNewFunction;
+import jarvis.atoms.cheatcode.OperatorSetFunction;
 import jarvis.atoms.cheatcode.integers.IntegerAddFunction;
 import jarvis.atoms.cheatcode.integers.IntegerEqualsFunction;
 import jarvis.atoms.cheatcode.integers.IntegerMultiplyFunction;
@@ -130,6 +131,7 @@ public class JarvisInterpreter {
 		environment.put("_boolAndFunction", new BooleanAndFunction());
 		environment.put("_boolOrFunction", new BooleanOrFunction());
 		environment.put("_operatorNewFunction", new OperatorNewFunction());
+		environment.put("_operatorSetFunction", new OperatorSetFunction());
 	}
 
 	//HÉRITAGE

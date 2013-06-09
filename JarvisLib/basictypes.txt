@@ -4,7 +4,7 @@
 #HÉRITAGE: il manque la classe Object.
 # Vous devriez la définir ici.
 ()
-[]
+["set" _operatorSetFunction]
 "NULL"
 !(Class new)
 !ref Object
