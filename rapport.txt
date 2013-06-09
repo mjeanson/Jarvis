@@ -1,0 +1,36 @@
+Fonctions Tricheuses (25%)
+--------------------------
+* basictypes.txt: Ajouter les nouveaux opérateurs au dictionnaire des méthodes des classes bool et int
+* BooleanXXXFunction.java: Implémenter une classe pour chaque nouvel opérateur en se basant sur le code des classes int existantes
+* JarvisInterpreter.java: Ajouter les classe à l'environnement
+
+
+Rectangle (50%)
+---------------
+* Rectangle.txt: 
+  * Implémenter la fonction fonctionAbs qui retourne la valeure absolue d'un JarvisInt en se basant sur l'exemple ifelse
+  * Modifier la classe rectangle pour appeler la fonction fonctionAbs sur le resultat du calcul de la longueur et de la largeur
+
+
+L'héritage, première partie (75%)
+---------------------------------
+* basictypes.txt: 
+  * Créer une nouvelle classe Object avec une liste d'attributs vide, un dictionnaire de methode vide et un 3e parametre contenant la string NULL qui représentera l'absence de classe parente
+  * Modifier les définitions de classes existantes pour ajouter la classe parente dans le 3e parametre
+* heritagemethodes.txt:
+  * Modifier les définitions de classes existantes pour ajouter la classe parente dans le 3e parametre
+* JarvisObject.java:
+  * Ajouter la constante "SUPER_FIELD" dans la classe JarvisObject 
+  * Modifier la méthode "message()" pour aller chercher l'attribut "super" de la classe de l'objet et chercher recursivement la hierachie des classe jusqu'a NULL
+* JarvisInterpreter.java:
+  * Ajouter le membre "super" dans createClassClass
+
+Le mutateur universel (90%)
+---------------------------
+
+
+L'héritage, deuxième partie (100%)
+----------------------------------
+
+Les variables de classe (105%)
+------------------------------
