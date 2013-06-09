@@ -1,0 +1,34 @@
+!load JarvisLib/basictypes.txt
+!load JarvisLib/util.txt
+!mute
+
+
+
+("value")
+[]
+bool
+!(Class new)
+!ref Test
+
+#!e
+!p
+
+!(bool new true)
+!ref boolInstance
+
+!p
+
+!(boolInstance !)
+pbool
+!p
+
+!(Test new true)
+!ref testInstance
+
+#!e
+!p
+
+!(testInstance !)
+pbool
+
+!p

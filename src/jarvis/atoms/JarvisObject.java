@@ -23,6 +23,7 @@ public class JarvisObject extends JarvisAtom {
 	 */
 	public static final int ATTRIBUTE_FIELD =0;
 	public static final int METHOD_FIELD =1;
+	public static final int SUPER_FIELD =2;
 	
 	/*
 	 * Référence à la classe de cet objet.
@@ -76,6 +77,8 @@ public class JarvisObject extends JarvisAtom {
 		
 		//Va chercher les attributs
 		JarvisList members = (JarvisList) classReference.values.get(ATTRIBUTE_FIELD);
+		
+
 
 		//Vérifie si c'est un attribut 
 		int pos = members.find(selector);
@@ -83,6 +86,7 @@ public class JarvisObject extends JarvisAtom {
 		
 		if (pos == -1) {
 			// pas un attribut...
+			
 			// Va chercher les méthodes
 			JarvisDictionnary methods = (JarvisDictionnary) classReference.values
 					.get(METHOD_FIELD);
@@ -91,11 +95,25 @@ public class JarvisObject extends JarvisAtom {
 			JarvisAtom res = methods.get(selector.makeKey());
 
 			if (res == null) {
+				// Ce n'est pas une methode locale
 				
-				// Rien ne correspond au message
-				return new JarvisString("ComprendPas "+ selector);
+				// Aller chercher l'objet de la super classe
+				System.out.print(classReference);
+				JarvisAtom classSuper = (JarvisAtom) classReference.values.get(SUPER_FIELD);
+				System.out.print(classSuper);
+				
+				// Vérifier si on est arrivé à la racine de l'arbre d'héritage
+				if ((classSuper instanceof JarvisString) && ((JarvisString) classSuper == new JarvisString("NULL")) )
+				{
+					// On est arrivé a la racine, rien ne correspond au message
+					return new JarvisString("SuperComprendPas "+ selector);	
+				} else {
+					// Sinon chercher recursivement dans les membres de la superclasse
+					System.out.print("Recherche recursive pour la methode: ");
+					return ((JarvisObject) classSuper).message(selector);
+				}
 			} else {
-				//C'est une méthode.
+				//C'est une méthode locale
 				return res;
 			}
 
@@ -105,6 +123,8 @@ public class JarvisObject extends JarvisAtom {
 			//C'est un attribut.
 			return values.get(pos);
 		}
+		
+		
 	}
 
 	public void setClass(JarvisObject theClass) {
