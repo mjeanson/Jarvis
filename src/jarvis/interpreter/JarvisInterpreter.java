@@ -184,6 +184,9 @@ public class JarvisInterpreter {
 		 */
 		methods.put("new", new OperatorNewFunction());
 
+		
+		JarvisString superclass = new JarvisString("CLASS");
+		
 		/*
 		 * Création d'un objet qui sera instance de Class Ses données seront la
 		 * liste des attributs dictionnaire de méthodes créés plus haut.
@@ -192,6 +195,7 @@ public class JarvisInterpreter {
 
 		data.add(members);
 		data.add(methods);
+		data.add(superclass);
 
 		JarvisObject ClassClass = new JarvisObject(null, data,this);
 
