@@ -3,6 +3,7 @@ package jarvis.atoms.cheatcode;
 import jarvis.atoms.JarvisAtom;
 import jarvis.atoms.JarvisList;
 import jarvis.atoms.JarvisObject;
+import jarvis.atoms.JarvisString;
 import jarvis.interpreter.JarvisInterpreter;
 
 import java.util.ArrayList;
@@ -35,6 +36,38 @@ public class OperatorNewFunction extends JarvisFunction{
 		//Seule une classe peut faire new. Ramasser de la classe combien d'attributs ça prend.
 		
 		JarvisList attributes = (JarvisList)self.message("attributes");
+		
+		JarvisAtom superclass = (JarvisAtom)self.message("super");
+		
+		JarvisList superattributes;
+		
+		//System.out.println("Ma super classe est: " + superclass.makeKey());
+		
+		while (true) {
+			if (superclass instanceof JarvisString) {
+				// On a atteint la racine de l'arbre
+				//System.out.println("On a atteint la racine: " + superclass.makeKey());
+				break;
+			} else {
+				superattributes = (JarvisList) ((JarvisObject) superclass).message("attributes");
+				for(int i=0;i<superattributes.size();i++) {
+					//System.out.println("Attribut: " + superattributes.get(i));
+					// Si l'attribut n'existe pas deja, l'ajouter
+					if (attributes.size() == 0) {
+						//System.out.println("Vide: " + superattributes.get(i).makeKey());
+					} else if (attributes.indexOf(superattributes.get(i)) == -1) {
+						System.out.println("Ajouter ATT: " + superattributes.get(i).makeKey());
+						attributes.add(superattributes.get(i));
+					} else {
+						//System.out.println("DOUBLE: " + superattributes.get(i).makeKey());
+					}
+				}
+				// Allez chercher la prochaine superclasse
+				superclass = (JarvisAtom) ((JarvisObject) superclass).message("super");
+			}
+		}
+		
+		System.out.println("Attributes: " + attributes.makeKey());
 		
 		ArrayList<JarvisAtom> data = new ArrayList<JarvisAtom>();
 		for(int i=0;i<attributes.size();i++)

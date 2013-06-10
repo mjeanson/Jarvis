@@ -74,14 +74,39 @@ public class JarvisObject extends JarvisAtom {
 	 */	
 	public JarvisAtom message(JarvisAtom selector) {
 		
+		// Allez chercher la super classe dans le classref
+		JarvisAtom superclass = (JarvisAtom) classReference.values.get(SUPER_FIELD);
 		
 		//Va chercher les attributs
 		JarvisList members = (JarvisList) classReference.values.get(ATTRIBUTE_FIELD);
 
+		JarvisList supermembers;
+		while (true) {
+			if (superclass instanceof JarvisString) {
+				// On a atteint la racine de l'arbre
+				break;
+			} else {
+				supermembers = (JarvisList) ((JarvisObject) superclass).values.get(ATTRIBUTE_FIELD);
+				System.out.println("Supermembers: " + supermembers.makeKey());
+				for(int i=0;i<supermembers.size();i++) {
+					// Si l'attribut n'existe pas deja, l'ajouter
+					if (members.indexOf(supermembers.get(i)) == -1) {
+						System.out.println("Ajouter MEM: " + supermembers.get(i).makeKey());
+						members.add(supermembers.get(i));
+					}
+				}
+				// Allez chercher la prochaine superclasse
+				superclass = (JarvisAtom) ((JarvisObject) superclass).values.get(SUPER_FIELD);
+			}
+		}
+		
+		System.out.println("Members (" + selector.makeKey() + ") : " + members.makeKey());
+		
+		// Remettre la superclasse a zero
+		superclass = (JarvisAtom) classReference.values.get(SUPER_FIELD);
+		
 		//Vérifie si c'est un attribut 
-		int pos = members.find(selector);
-		
-		
+		int pos = members.find(selector);		
 		if (pos == -1) {
 			// pas un attribut...
 			// Va chercher les méthodes
@@ -94,11 +119,7 @@ public class JarvisObject extends JarvisAtom {
 			if (res == null) {
 				
 				// Rien ne correspond au message
-				
-				// Allez chercher la super classe dans le classref
-				JarvisAtom classrefsuper = (JarvisAtom) classReference.values.get(SUPER_FIELD);
-				
-				return getsupermethod(classrefsuper, selector);
+				return getsupermethod(superclass, selector);
 			} else {
 				//C'est une méthode.
 				return res;
