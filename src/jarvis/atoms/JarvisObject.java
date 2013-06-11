@@ -55,6 +55,13 @@ public class JarvisObject extends JarvisAtom {
 		return classReference;
 	}
 	
+	public JarvisAtom getAttribute(int pos) {
+		return values.get(pos);
+	}
+	
+	public void setAttribute(int pos, JarvisAtom val) {
+		values.set(pos, val);
+	}
 	
 	//Cas spécial où le selecteur n'est pas encore encapsulé dans un atome
 	//Supporté pour alléger la syntaxe.

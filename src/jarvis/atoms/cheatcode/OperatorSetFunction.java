@@ -32,23 +32,25 @@ public class OperatorSetFunction extends JarvisFunction{
 		// On assume que c'est une string qui represente l'attribut a modifier
 		JarvisString member = (JarvisString) ji.getArg();
 		
+		// Tester si c'est un JarvisObject et recupérer l'attribut value
+		
 		// Le second argument se trouve dans la file de l'interpréteur
 		// C'est la valeur de l'attribut a modifier	
 		JarvisAtom nexval = ji.getArg();
 		
-		JarvisAtom curval = (JarvisAtom) self.message(member.makeKey());
-		
-		System.out.println("CURVAL:" + curval.makeKey());
-		System.out.println("NEXVAL:" + nexval.makeKey());
-		
-		System.out.println(ji.getEnvironment().get(self));
-		
+		// Recuperer la classe de l'objet
 		JarvisList attributes = (JarvisList) self.getJarvisClass().message("attributes");
 		
-		// Trouver la position du membre dans la liste
-		int i = attributes.find(member);
+		// Trouver la position du membre a modifier dans la liste
+		int pos = attributes.find(member);
 		
-		//environment.put ?
+		// Inserer la valeur
+		self.setAttribute(pos, nexval);
+		
+		// Recuperer l'object values au complet
+		// Modifier la valeur
+		// Reinserer dans l'environement ?
+		
 		
 		//Ici, construit un objet bool manuellement... plus simple qu'avec l'environnement et le new
 		ArrayList<JarvisAtom> data = new ArrayList<JarvisAtom>();
