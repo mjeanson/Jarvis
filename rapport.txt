@@ -1,8 +1,11 @@
 Fonctions Tricheuses (25%)
 --------------------------
-* basictypes.txt: Ajouter les nouveaux opérateurs au dictionnaire des méthodes des classes bool et int
-* BooleanXXXFunction.java: Implémenter une classe pour chaque nouvel opérateur en se basant sur le code des classes int existantes
-* JarvisInterpreter.java: Ajouter les classe à l'environnement
+* basictypes.txt:
+  * Ajouter les nouveaux opérateurs au dictionnaire des méthodes des classes bool et int
+* BooleanXXXFunction.java:
+  * Implémenter une classe pour chaque nouvel opérateur en se basant sur le code des classes int existantes
+* JarvisInterpreter.java: 
+  * Ajouter les classe à l'environnement
 
 
 Rectangle (50%)
@@ -27,10 +30,28 @@ L'héritage, première partie (75%)
 
 Le mutateur universel (90%)
 ---------------------------
+NOTE: Implementation non-fonctionnelle dans la branche git WIP-muta
 
+* basictypes.txt:
+  * Ajouter l'opérateur set au disctionnaire de methode de la classe "Object"
+* OperatorSetFunction.java:
+  * Recuperer la liste des attributs dans la classe de l'objet
+  * Trouver la position du membre a modifier dans la liste
+  * Si la valeur a inserer est un JarvisObject, recuperer le JarvisAtom dans le membre "value"
+  * Inserer la valeur dans le bon objet de l'environnement a la bonne position de la liste d'attributs
+* JarvisInterpreter.java:
+  * Ajouter la classe "OperatorSetFunction" à l'environnement
+* JarvisObject.java:
+  * Ajout de fonctions pour interagir avec la liste "values"
 
 L'héritage, deuxième partie (100%)
 ----------------------------------
+NOTE: Implementation non-fonctionnele dans la branche git WIP-heritage2
+
+* JarvisObject.java:
+  * Dans la methode "message", parcourir l'arbre de superclasses, recuperer les attributs et generer une liste de tous les attributs.
+* OperatorNewFunction.java:
+  * Parcourir l'arbre de superclasses et compter les attributs.
 
 Les variables de classe (105%)
 ------------------------------
